@@ -1,4 +1,4 @@
-###################################################################################################################################################
+####################################################################################################################################################
 numero variacao = 0
 numero vezesParaGirar = 0
 numero vezesParaSairDaVisao = 0
@@ -48,9 +48,9 @@ tarefa procurarEcentralizarBolinha {
 }
 
 tarefa pegarBolinha {
-    #vai pra tras pra pegar a bonita
+  #vai pra tras pra pegar a bonita
   enquanto(ultra(3)< 30)farei{
-    tras(100)
+    tras(200)
   }
   parar()
   baixar(1500)
@@ -59,6 +59,7 @@ tarefa pegarBolinha {
   esperar(500)
   frente(300)
   esperar(200)
+  parar()
   levantar(2000)
   velocidadeatuador(80)
   tras(200)
@@ -126,24 +127,10 @@ tarefa levarBola{
         }
         rotacionar(1000,90)
       }senao{
-      enquanto(ultra(3)>10)farei{
-        frente(300)
-      }
-      sensorBaixo=ultra(3)
-      frente(300)
-      parar()
-		  esperar(500)
-		  #se for bolinha
-		  se((ultra(3)-sensorBaixo)>1)entao{
-        enquanto(ultra(3)>9)farei{
-          frente(300)
-        }
-        rotacionar(1000,90)
-      }senao{
         sensorBaixo=ultra(3)
-        rotacionar(1000,5)
-        se(ultra(3)>sensorBaixo)entao{ 
-          rotacionar(1000,negativo(5))
+        rotacionar(100,5)
+        se(ultra(3)>sensorBaixo)entao{
+          rotacionar(100,negativo(5))
           parar()
           rotacionar(1000,45)
           # vai pra frente ate achar parede e dps vai pra frente um pouco pra tacar a bolinha
@@ -452,11 +439,12 @@ tarefa CorrigirAngulo{
 numero estavaCurva = 0
 tarefa modoSegueLinha {
     escrever(2, virartexto(numInclinacao))
-    se(numInclinacao>900)entao{
+    se(numInclinacao>600)entao{
         escrever(1, "entrouu")
         frente(velFrente)
-        esperar(3000)
+        esperar(1000)
         parar()
+        
         modoResgate()
     }
 # Diminuir velocidade quando detectar subida ou descida
@@ -471,6 +459,9 @@ tarefa modoSegueLinha {
         estavaCurva = 1
      }senao{
         velFrente = 120
+     }
+     se(numInclinacao>500)entao{
+        velFrente = 1000
      }
 
 # Curva verde direita
@@ -617,4 +608,4 @@ inicio
   enquanto (1==1) farei{
     modoSegueLinha()
   }
-fim 
+fim
