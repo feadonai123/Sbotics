@@ -251,7 +251,6 @@ tarefa modoResgate{
   esperar(100000)##sair do modo pegar bolinha
 }
 
-
 #SEGUIR LINHA****************************
 numero velFrente = 120
 numero velCurva = 1000
@@ -444,7 +443,6 @@ tarefa modoSegueLinha {
         frente(velFrente)
         esperar(1000)
         parar()
-        
         modoResgate()
     }
 # Diminuir velocidade quando detectar subida ou descida
@@ -564,10 +562,10 @@ tarefa modoSegueLinha {
         escrever(1, "MDS, OBSTÁCULO DESVIAAAA!!!!!")
         rotacionar(500,45)
         frente(velFrente)
-        esperar(1800)
+        esperar(1400)
         rotacionar(velRotacao,negativo(45)) 
         frente(150)
-        esperar(2000)
+        esperar(1800)
         rotacionar(velRotacao,negativo(45)) 
         enquanto(cor(3)!="PRETO")farei{
             frente(150)
@@ -598,8 +596,6 @@ tarefa modoSegueLinha {
         esperar(1)
     }
 }
-
-
 
 inicio
   levantar(1500)
